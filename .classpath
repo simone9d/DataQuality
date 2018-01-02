@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry kind="lib" path="lib/LanguageTool-3.9/languagetool-commandline.jar"/>
+	<classpathentry kind="lib" path="lib/LanguageTool-3.9/languagetool-server.jar"/>
+	<classpathentry kind="lib" path="lib/LanguageTool-3.9/languagetool.jar"/>
+	<classpathentry kind="lib" path="lib/geocoder-java-0.16.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="lib/itext5-itextpdf-5.5.12.jar"/>
+	<classpathentry kind="lib" path="lib/GMapsFX-2.12.0.jar"/>
+	<classpathentry kind="lib" path="lib/JaSpell.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

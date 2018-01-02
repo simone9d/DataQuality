@@ -1,0 +1,51 @@
+# A part-of-speech dictionary that's used additionally to the binary dictionary (*.dict).
+# This does not add words to the spell checker, see hunspell/spelling.txt for that.
+# File Encoding: UTF-8
+# Format: three tab-separated fields: fullform baseform postags
+#
+antecedência	antecedência	NCFS000
+antecedências	antecedência	NCFP000
+Bairro	Bairro	NPMSG00
+BCE	BCE	NPMSO00
+boia	boia	NCFS000
+boias	boia	NCFP000
+chanceler	chanceler	NCCS000
+chanceleres	chanceler	NCCP000
+chefe	chefe	NCCS000
+chefes	chefe	NCCP000
+creem	crer	VMIP3P0
+deem	dar	VMM03P0
+deem	dar	VMSP3P0
+diafragma	diafragma	NCMS000
+diafragmas	diafragma	NCMP000
+fãs	fã	NCCP000
+Fonseca	Fonseca	NPCSS00
+glamour	glamour	NCMS000
+hospitalar	hospitalar	AQ0CS0
+hospitalares	hospitalar	AQ0CP0
+Gana	Gana	NPMS000
+Jugoslávia	Jugoslávia	NPFS000
+LanguageTool	LanguageTool	NPMFO00_
+leem	ler	VMIP3P0
+modelo	modelo	NCCS000
+modelos	modelo	NCCP000
+OpenStreetMap	OpenStreetMap	NPMS000_
+Perú	Perú	NPMSG00
+polo	polo	NCMS000
+polos	polo	NCMP000
+preveem	prever	VMIP3P0
+quilograma	quilograma	NPMS000
+quilogramas	quilograma	NPMP000
+regata	regata	NCFS000
+regatas	regata	NCFP000
+Rodes	Rodes	NPMSG00
+secular	secular	AQ0CS0
+seculares	secular	AQ0CP0
+University	University	NPFS000
+trauma	trauma	NCMS000
+traumas	trauma	NCMP000
+vagina	vagina	NCFS000
+vaginas	vagina	NCFP000
+veem	ver	VMIP3P0
+vilã	vilão	NCFS000
+vilãs	vilão	NCFP000
