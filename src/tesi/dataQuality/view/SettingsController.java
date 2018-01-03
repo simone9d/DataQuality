@@ -31,43 +31,43 @@ import tesi.dataQuality.model.Column;
 public class SettingsController {
 	
 	@FXML
-	private PasswordField PWMask;
+	public PasswordField PWMask;
 	@FXML
-	private TextField PW;
+	public TextField PW;
 	@FXML
-	private Line dbLine1;
+	public Line dbLine1;
 	@FXML
-	private Line dbLine2;
+	public Line dbLine2;
 	@FXML
-	private MenuButton slctDB;	
+	public MenuButton slctDB;	
 	@FXML
-	private Line tableLine;
+	public Line tableLine;
 	@FXML
-	private Label extTable;
+	public Label extTable;
 	@FXML
-	private ScrollPane panelTables;
+	public ScrollPane panelTables;
 	@FXML
-	private AnchorPane paneTables;
+	public AnchorPane paneTables;
 	@FXML
-	private Label lblDB;
+	public Label lblDB;
 	@FXML
-	private GridPane grid;
+	public GridPane grid;
 	@FXML
-	private GridPane table;
+	public GridPane table;
 	@FXML
-	private ScrollPane panelResults;
+	public ScrollPane panelResults;
 	@FXML
-	private AnchorPane paneResults;
+	public AnchorPane paneResults;
 	@FXML
-	private Button analize;
+	public Button analize;
 	@FXML
-	private TextField userName;
+	public TextField userName;
 	@FXML
-	private ScrollPane settings;
+	public ScrollPane settings;
 	@FXML 
-	private AnchorPane panel;
+	public AnchorPane panel;
 	@FXML
-	private GridPane gridda;
+	public GridPane gridda;
 
 	
 	private boolean showPW=false;
@@ -94,51 +94,67 @@ public class SettingsController {
 		}
 	}
 	
+	
+	
+	
+	
 	@FXML
 	private void insPW() {
 		slctDB.getItems().clear();
 		Configurator.setPw(PWMask.getText());
-		Configurator.setUser(userName.getText());
-		
+		Configurator.setUser(userName.getText());		
 		ResultSet rs=MySqlDao.getDatabases();
-		
 		if(MySqlDao.connected()) {
-			try {
-				while(rs.next()) {
-					MenuItem item = new MenuItem(rs.getString(1));
-					item.setOnAction(new EventHandler<ActionEvent>() {
-					    @Override
-					    public void handle(ActionEvent event) {
-					    	slctDB.setText(item.getText());
-					    	Configurator.setDb(item.getText());
-					    	showTables();
-					    }
-					});
-					slctDB.getItems().add(item);
-				}
-			} catch (SQLException e) {
-				System.out.println("SQL Error");
-			}
-			
-			PW.setDisable(true);
-			PWMask.setDisable(true);
-			dbLine1.setVisible(true);
-			dbLine2.setVisible(true);
-			slctDB.setVisible(true);
-			slctDB.setDisable(false);
-			lblDB.setVisible(true);
-			
+			DBChoser(rs);
+			shower();
 		}
 		else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-	        alert.setTitle("Login failed");
-	        alert.setHeaderText("Info");
-	        alert.setContentText("Wrong Password!\nPlease, insert PW again.");
-	        alert.showAndWait();
+			alert();
 		}
-					
 	}
 	
+	private void DBChoser(ResultSet rs) {
+		
+		try {
+			while(rs.next()) {
+				MenuItem item = new MenuItem(rs.getString(1));
+				item.setOnAction(new EventHandler<ActionEvent>() {
+				    @Override
+				    public void handle(ActionEvent event) {
+				    	slctDB.setText(item.getText());
+				    	Configurator.setDb(item.getText());
+				    	showTables();
+				    }
+				});
+				slctDB.getItems().add(item);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	private void alert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Login failed");
+        alert.setHeaderText("Info");
+        alert.setContentText("Wrong Password!\nPlease, insert PW again.");
+        alert.showAndWait();
+		
+	}
+
+	private void shower() {
+		PW.setDisable(true);
+		PWMask.setDisable(true);
+		dbLine1.setVisible(true);
+		dbLine2.setVisible(true);
+		slctDB.setVisible(true);
+		slctDB.setDisable(false);
+		lblDB.setVisible(true);
+		
+	}
+
 	private void showTables() {
 		int rowIndex=0;
 		grid.getChildren().clear();

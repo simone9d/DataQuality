@@ -39,7 +39,7 @@ import tesi.dataQuality.utility.StringUtils;
 public class AnalyzerController {
 	
 	@FXML
-	private TabPane panels;
+	public TabPane panels;
 	
 
 	@FXML

@@ -18,7 +18,7 @@ public class Column {
 	private boolean jaspell;
 	private boolean googleMaps;
 	private final int index;
-	private LinkedList<Campo> fields;
+	private List<Campo> fields;
 	private Report LTrep=new Report();
 	private Report JSrep=new Report();
 	private Report GMrep=new Report();
@@ -127,10 +127,10 @@ public class Column {
 	}
 
 	public LinkedList<Campo> getFields() {
-		return fields;
+		return (LinkedList<Campo>) fields;
 	}
 
 	public void addFields(Campo field) {
-		this.fields.addLast(field);
+		((LinkedList<Campo>) this.fields).addLast(field);
 	}
 }

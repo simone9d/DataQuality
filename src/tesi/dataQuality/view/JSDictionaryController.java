@@ -36,9 +36,9 @@ public class JSDictionaryController {
 	@FXML
 	private Button fine;
 	@FXML
-	private TextField toAddWord;
+	public TextField toAddWord;
 	@FXML
-	private TableColumn<Parola, String> wordColumn;
+	public TableColumn<Parola, String> wordColumn;
 	@FXML
 	private TableView<Parola> wordTable;
 

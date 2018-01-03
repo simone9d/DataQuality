@@ -40,13 +40,13 @@ public class LGDictionaryController {
 	@FXML
 	private Button fine;
 	@FXML
-	private TextField toAddWord;
+	public TextField toAddWord;
 	@FXML
-	private RadioButton temp;
+	public RadioButton temp;
 	@FXML
 	private RadioButton def;
 	@FXML
-	private TableColumn<Parola, String> wordColumn;
+	public TableColumn<Parola, String> wordColumn;
 	@FXML
 	private TableView<Parola> wordTable;
 
