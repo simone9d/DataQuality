@@ -25,8 +25,6 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("DataQualityChecker");
 		this.primaryStage.setResizable(false);
 
-		//this.primaryStage.getIcons().add(new Image("file:resources/images/Education.png"));
-
 		initRootLayout();
 
 		showRequest();

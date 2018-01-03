@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="590.0" prefWidth="820.0" style="-fx-background-color: #F0F8FF;" stylesheets="@../../../../../../Desktop/css%20themes/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tesi.dataQuality.view.SettingsController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="590.0" prefWidth="820.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tesi.dataQuality.view.SettingsController">
    <children>
       <PasswordField fx:id="PWMask" layoutX="92.0" layoutY="86.0" />
       <TextField fx:id="PW" layoutX="92.0" layoutY="86.0" visible="false" />
