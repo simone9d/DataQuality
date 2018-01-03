@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 import java.util.TreeSet;
 import tesi.dataQuality.model.Parola;
 
@@ -19,22 +20,22 @@ public class WordsUtilsJS {
 	
 	/** The single instance of this class. */
 	private static final WordsUtilsJS _theInstance = new WordsUtilsJS();
-	private static TreeSet<String> toIgnorePermanently = new TreeSet<String>();
+	private static Set<String> toIgnorePermanently = new TreeSet<String>();
 	
 	public static TreeSet<String> getToIgnoreWords(){
 		toIgnorePermanently.addAll(load());
 		save();
-		return toIgnorePermanently;
+		return (TreeSet<String>) toIgnorePermanently;
 	}
 	
 	public static TreeSet<Parola> getToIgnoreShow(){
-		TreeSet<Parola> words = new TreeSet<Parola>();
+		Set<Parola> words = new TreeSet<Parola>();
 		toIgnorePermanently.addAll(load());
 		for(String str : toIgnorePermanently) {
 			words.add(new Parola(str));
 		}
 		save();
-		return words;
+		return (TreeSet<Parola>) words;
 	}
 	
 	public static WordsUtilsJS getInstance() {
@@ -58,7 +59,7 @@ public class WordsUtilsJS {
 	}
 
 	private static TreeSet<String> load(){
-		TreeSet<String> words = new TreeSet<String>();
+		Set<String> words = new TreeSet<String>();
 		
 		try {
 			FileReader fr = new FileReader("dict/italian.txt");
@@ -81,7 +82,7 @@ public class WordsUtilsJS {
 			System.out.println("IO Error");
 		}
 		
-		return words;
+		return (TreeSet<String>) words;
 				
 	}
 

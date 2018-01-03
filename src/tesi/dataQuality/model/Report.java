@@ -1,5 +1,6 @@
 package tesi.dataQuality.model;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -12,7 +13,7 @@ public class Report {
 	
 	private int analyzed=0;
 	private int withMistakes=0;
-	private TreeSet<Campo> wrongSentences = new TreeSet<Campo>();
+	private Set<Campo> wrongSentences = new TreeSet<Campo>();
 	private long inizio=0;
 	private long fine=0;
 	private long totalTime=0;
@@ -75,7 +76,7 @@ public class Report {
 	}
 	
 	public TreeSet<Campo> getSentence() {
-		return wrongSentences;
+		return (TreeSet<Campo>) wrongSentences;
 	}
 
 }

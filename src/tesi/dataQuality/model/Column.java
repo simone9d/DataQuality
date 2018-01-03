@@ -1,6 +1,7 @@
 package tesi.dataQuality.model;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Classe model che rappresenta una colonna di una tabella
@@ -10,7 +11,7 @@ import java.util.LinkedList;
  */
 public class Column {
 	
-	private static LinkedList<Column> column = new LinkedList<Column>();
+	private static List<Column> column = new LinkedList<Column>();
 	
 	private String campo;
 	private boolean languageTool;
@@ -47,7 +48,7 @@ public class Column {
 	}
 
 	public static LinkedList<Column> getList(){
-		return column;
+		return (LinkedList<Column>) column;
 	}
 	
 	public static void cleanList() {
@@ -55,7 +56,7 @@ public class Column {
 	}
 	
 	public static void addList(Column col) {
-		column.addLast(col);
+		((LinkedList<Column>) column).addLast(col);
 	}
 	
 	public Column(String str, int index) {

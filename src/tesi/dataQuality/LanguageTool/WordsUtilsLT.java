@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Set;
 import java.util.TreeSet;
 
 import tesi.dataQuality.model.Parola;
@@ -20,17 +21,17 @@ public class WordsUtilsLT {
 	
 	/** The single instance of this class. */
 	private static final WordsUtilsLT _theInstance = new WordsUtilsLT();
-	private static TreeSet<String> toIgnorePermanently = new TreeSet<String>(); 
-	private static TreeSet<String> toIgnoreTemporarily = new TreeSet<String>();
-	private static TreeSet<String> toIgnoreWords = new TreeSet<String>();
+	private static Set<String> toIgnorePermanently = new TreeSet<String>(); 
+	private static Set<String> toIgnoreTemporarily = new TreeSet<String>();
 	
 	public static TreeSet<String> getToIgnoreWords(){
 		toIgnorePermanently.addAll(load());
+		Set<String> toIgnoreWords = new TreeSet<String>();
 		toIgnoreWords.clear();
 		toIgnoreWords.addAll(toIgnorePermanently);
 		toIgnoreWords.addAll(toIgnoreTemporarily);
 		save();
-		return toIgnoreWords;
+		return (TreeSet<String>) toIgnoreWords;
 	}
 	
 	public static TreeSet<Parola> getToIgnoreShow(){
@@ -100,9 +101,9 @@ public class WordsUtilsLT {
 			try {
 				FileInputStream inFile = new FileInputStream("support/toIgnorePermanentlyLT.dat");
 				ObjectInputStream inStream = new ObjectInputStream(inFile);
-				TreeSet<String> words = (TreeSet<String>) inStream.readObject();
+				Set<String> words = (TreeSet<String>) inStream.readObject();
 				inStream.close();
-				return words;
+				return (TreeSet<String>) words;
 				
 			} catch (IOException | ClassNotFoundException e) {
 				System.out.println("Error");
@@ -112,10 +113,10 @@ public class WordsUtilsLT {
 		}
 		
 		
-		TreeSet<String> toIgn= new TreeSet<String>();
-		ignore(toIgn);
+		Set<String> toIgn= new TreeSet<String>();
+		ignore((TreeSet<String>) toIgn);
 		
-		return toIgn;
+		return (TreeSet<String>) toIgn;
 				
 	}
 

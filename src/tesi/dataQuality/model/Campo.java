@@ -2,6 +2,7 @@ package tesi.dataQuality.model;
 
 import java.math.BigDecimal;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.TreeMap;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -16,7 +17,7 @@ import javafx.beans.property.StringProperty;
 public class Campo implements Comparable<Campo>{
 	private StringProperty campo;
 	private String pk;
-	private LinkedList<String> LTcorrection=new LinkedList<String>();
+	private List<String> LTcorrection=new LinkedList<String>();
 	private String JSCorrection="";
 	private String GMCorrection="";
 	private String column="";
@@ -91,7 +92,7 @@ public class Campo implements Comparable<Campo>{
 	}
 	
 	public void setCorrection(String str) {
-		LTcorrection.addLast(str);
+		((LinkedList<String>) LTcorrection).addLast(str);
 	}
 
 	public String getLTcorrection() {
@@ -104,7 +105,7 @@ public class Campo implements Comparable<Campo>{
 	}
 	
 	public LinkedList<String> getAllLTCorrs(){
-		return this.LTcorrection;
+		return (LinkedList<String>) this.LTcorrection;
 	}
 
 	public String getJSCorrection() {

@@ -2,7 +2,7 @@ package tesi.dataQuality.analyzer;
 
 import java.io.*;
 import java.sql.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.List;
 import org.languagetool.JLanguageTool;
 import org.languagetool.language.Italian;
@@ -53,7 +53,7 @@ public class AnalyzerController {
 		
 		Tab panel = new Tab(col.getCampo());
 		
-		if(!(!col.isLanguageTool()&&!col.isJaspell()&&!col.isGoogleMaps())) {
+		if(col.isLanguageTool()||col.isJaspell()||col.isGoogleMaps()) {
 			panels.getTabs().add(panel);
 		}
 		
