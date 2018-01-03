@@ -2,6 +2,12 @@ package tesi.dataQuality.model;
 
 import java.util.LinkedList;
 
+/**
+ * Classe model che rappresenta una colonna di una tabella
+ * di un determinato database
+ * @author PC-Simone
+ *
+ */
 public class Column {
 	
 	private static LinkedList<Column> column = new LinkedList<Column>();

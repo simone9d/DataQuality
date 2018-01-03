@@ -34,6 +34,12 @@ import tesi.dataQuality.DAO.MySqlDao;
 import tesi.dataQuality.analyzer.AnalyzerController;
 import tesi.dataQuality.model.Column;
 
+/**
+ * Classe per la gestione dei settings per il
+ * login a mySql e per la scelta dei controlli da eseguire
+ * @author PC-Simone
+ *
+ */
 public class SettingsController {
 	
 	@FXML
@@ -104,7 +110,7 @@ public class SettingsController {
 	private void insPW() {
 		slctDB.getItems().clear();
 		MySqlDao.pw=PWMask.getText();
-		MySqlDao.user=userName.getText();
+		MySqlDao.us=userName.getText();
 		
 		ResultSet rs=MySqlDao.getDatabases();
 		
@@ -122,7 +128,9 @@ public class SettingsController {
 					});
 					slctDB.getItems().add(item);
 				}
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+				System.out.println("SQL Error");
+			}
 			
 			PW.setDisable(true);
 			PWMask.setDisable(true);
@@ -178,7 +186,9 @@ public class SettingsController {
 			        }
 			});			
 			
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+			System.out.println("SQL Error");
+		}
 
 	}
 	
@@ -253,7 +263,9 @@ public class SettingsController {
 				j=j+2;
 			}			
 			
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+			System.out.println("SQL Error");
+		}
 		
 	}
 	
@@ -277,7 +289,9 @@ public class SettingsController {
 			AnalyzerController settings=loader.getController();
 			
 			dialogStage.showAndWait();
-		} catch (IOException e) {}
+		} catch (IOException e) {
+			System.out.println("IO Error");
+		}
 		
 		
 	}

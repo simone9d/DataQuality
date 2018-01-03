@@ -7,13 +7,19 @@ import java.util.TreeMap;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Classe model che rappresenta una entry di una tabella
+ * di uno specifico database
+ * @author PC-Simone
+ *
+ */
 public class Campo implements Comparable<Campo>{
 	private StringProperty campo;
 	private String pk;
 	private LinkedList<String> LTcorrection=new LinkedList<String>();
-	private String JSCorrection= new String();
-	private String GMCorrection=new String();
-	private String column=new String();
+	private String JSCorrection="";
+	private String GMCorrection="";
+	private String column="";
 	private TreeMap<Integer,Integer> mistakesPos = new TreeMap<Integer,Integer>();
 	private int mistCount=1;
 	private BigDecimal lat;

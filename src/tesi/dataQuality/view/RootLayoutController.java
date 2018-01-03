@@ -13,6 +13,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tesi.dataQuality.MainApp;
 
+/**
+ * Classe che inizializza il layout grafico
+ * @author PC-Simone
+ *
+ */
 public class RootLayoutController {
 	
 	@FXML
@@ -50,7 +55,7 @@ public class RootLayoutController {
 			// Visualizza la schermata di login
 			dialogStage.showAndWait();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("IO Error");
 		}
 
 		
@@ -81,7 +86,7 @@ public class RootLayoutController {
 			// Visualizza la schermata di login
 			dialogStage.showAndWait();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("IO Error");
 		}
     }
 

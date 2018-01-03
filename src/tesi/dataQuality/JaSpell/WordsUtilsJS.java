@@ -9,6 +9,12 @@ import java.io.PrintWriter;
 import java.util.TreeSet;
 import tesi.dataQuality.model.Parola;
 
+/**
+ * Classe per la gestione del dizionario
+ * per il tool JaSpell
+ * @author PC-Simone
+ *
+ */
 public class WordsUtilsJS {
 	
 	/** The single instance of this class. */
@@ -71,7 +77,9 @@ public class WordsUtilsJS {
 			
 			br.close();
 			
-		} catch (IOException e) {}
+		} catch (IOException e) {
+			System.out.println("IO Error");
+		}
 		
 		return words;
 				
@@ -91,7 +99,9 @@ public class WordsUtilsJS {
 				scrivi.println(strB.toString());
 			}
 			scrivi.close();
-		} catch (IOException e) {}
+		} catch (IOException e) {
+			System.out.println("IO Error");
+		}
 		
 		
 	}

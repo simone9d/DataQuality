@@ -46,6 +46,13 @@ import tesi.dataQuality.model.Campo;
 import tesi.dataQuality.model.Column;
 import tesi.dataQuality.utility.StringUtils;
 
+/**
+ * Classe che "disegna" l'interfaccia grafica
+ * e che effettua i controlli tramite i tool
+ * JaSpell, GoogleMaps e LanguageTool.
+ * @author PC-Simone
+ *
+ */
 public class AnalyzerController {
 	
 	@FXML
@@ -90,7 +97,9 @@ public class AnalyzerController {
 				GMAnalysis(col);
 			}
 			
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+			System.out.println("SQL Error");
+		}
 		
 		
 				
@@ -194,6 +203,7 @@ public class AnalyzerController {
 		        if(file!=null) {
 		        	 try {
 		            	Document document = new Document();
+		            	
 						PdfWriter.getInstance(document, new FileOutputStream(file.getPath()));
 						
 						document.open();
@@ -220,7 +230,9 @@ public class AnalyzerController {
 						
 						document.close();
 					} catch (FileNotFoundException | DocumentException e) {
+						System.out.println("Error");
 					}
+		        	 
 		        }
 		    	
 		    
@@ -365,6 +377,7 @@ public class AnalyzerController {
 						
 						document.close();
 					} catch (FileNotFoundException | DocumentException e) {
+						System.out.println("Error");
 					}
 		        }	
 		    }
@@ -423,6 +436,7 @@ public class AnalyzerController {
 						
 						document.close();
 					} catch (FileNotFoundException | DocumentException e) {
+						System.out.println("Error");
 					}
 		        }
 				    	
@@ -490,7 +504,9 @@ public class AnalyzerController {
 			
 			col.getGMrep().setFine();
 			col.getGMrep().addTime();
-		} catch (IOException e) {}
+		} catch (IOException e) {
+			System.out.println("IO Error");
+		}
 		
 		
 	}
@@ -504,7 +520,7 @@ public class AnalyzerController {
 				col.getJSrep().incrAnalyzed();
 				String toCheck=StringUtils.normalize(new String(field.getCampo()));
 					
-				String correction=new String();
+				String correction="";
 				correction = JaSpell.check("-c/"+toCheck+"/--lang=it");
 				
 				if(!correction.equals(toCheck)) {
@@ -523,6 +539,7 @@ public class AnalyzerController {
 			col.getJSrep().setFine();
 			col.getJSrep().addTime();
 		} catch (Exception e) {
+			System.out.println("Error");
 		}
 	
 	}
@@ -609,6 +626,7 @@ public class AnalyzerController {
 			
 			col.getLTrep().setFine();
 		} catch (IOException e) {
+			System.out.println("Error");
 		}
 	}
 

@@ -10,7 +10,12 @@ import java.util.TreeSet;
 
 import tesi.dataQuality.model.Parola;
 
-
+/**
+ * Classe per la gestione delle eccezioni
+ * per il tool LanguageTool
+ * @author PC-Simone
+ *
+ */
 public class WordsUtilsLT {
 	
 	/** The single instance of this class. */
@@ -100,7 +105,7 @@ public class WordsUtilsLT {
 				return words;
 				
 			} catch (IOException | ClassNotFoundException e) {
-				e.printStackTrace();
+				System.out.println("Error");
 			}
 			
 			
@@ -616,8 +621,7 @@ public class WordsUtilsLT {
 			outStream.writeObject(WordsUtilsLT.toIgnorePermanently);
 			outStream.close();
 		} catch (IOException e) {
-
-			e.printStackTrace();
+			System.out.println("Error");
 		}
 		
 	}

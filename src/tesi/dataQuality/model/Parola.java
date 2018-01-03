@@ -3,6 +3,12 @@ package tesi.dataQuality.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Classe model necessaria per la visualizzazione
+ * delle parole nelle tabelle
+ * @author PC-Simone
+ *
+ */
 public class Parola implements Comparable<Parola> {
 	
 	private final StringProperty parola;

@@ -9,7 +9,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import tesi.dataQuality.view.RootLayoutController;
 
-
+/**
+ * Classe che rappresenta il punto di partenza del sistema
+ * @author PC-Simone
+ *
+ */
 public class MainApp extends Application {
 	
     private Stage primaryStage;
@@ -42,7 +46,7 @@ public class MainApp extends Application {
             //  SettingsController controller=loader.getController();
             //controller.setMainApp(this);
         } catch (IOException e) {
-            e.printStackTrace();
+        	System.out.println("IO Error");
         }
     }
 
@@ -66,7 +70,7 @@ public class MainApp extends Application {
 
 	        primaryStage.show();
 	    } catch (IOException e) {
-	        e.printStackTrace();
+	    	System.out.println("IO Error");
 	    }
 
 	}

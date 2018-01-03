@@ -2,6 +2,12 @@ package tesi.dataQuality.model;
 
 import java.util.TreeSet;
 
+/**
+ * Classe model per il salvataggio di tutti i
+ * dati necessari per la creazione del report
+ * @author PC-Simone
+ *
+ */
 public class Report {
 	
 	private int analyzed=0;

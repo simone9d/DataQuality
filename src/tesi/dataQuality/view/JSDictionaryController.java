@@ -15,7 +15,12 @@ import javafx.stage.Stage;
 import tesi.dataQuality.JaSpell.WordsUtilsJS;
 import tesi.dataQuality.model.Parola;
 
-
+/**
+ * Classe che gestisce l'aspetto grafico per la gestione
+ * delle eccezioni per JaSpell
+ * @author PC-Simone
+ *
+ */
 public class JSDictionaryController {
 	
 	private ObservableList<Parola> words=FXCollections.observableArrayList();

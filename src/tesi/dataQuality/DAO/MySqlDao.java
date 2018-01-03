@@ -7,16 +7,20 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+/**
+ * Classe per l'accesso al database
+ * @author PC-Simone
+ *
+ */
 public class MySqlDao {
 	private static MySqlDao dao=new MySqlDao();
 
 	private final static String host="localhost";
-	public static String db=new String();
-	public static String user=new String();
-	public static String table=new String(); 
+	public static String db="";
+	public static String us="";
+	public static String table=""; 
 	private static String connessione="jdbc:mysql://" + host + ":3306";	//"/ + db;
-	public static String pw=new String();
+	public static String pw="";
 	
 	private static Connection conn = null;
 	
@@ -45,7 +49,7 @@ public class MySqlDao {
 			ResultSet rs=stmt.executeQuery("Select * from " + table + ";");
 			return rs;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("SQL Error");
 		}
 		return null;
 		
@@ -59,7 +63,7 @@ public class MySqlDao {
 			ResultSet rs=stmt.executeQuery("show databases;");
 			return rs;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("SQL Error");
 		}
 		return null;
 		
@@ -72,7 +76,9 @@ public class MySqlDao {
 			Statement stmt = MySqlDao.connetti().createStatement();
 			stmt.executeQuery("Use "+db+";");
 			return stmt.executeQuery("show tables;");
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+			System.out.println("SQL Error");
+		}
 		return null;
 		
 	}
@@ -88,7 +94,9 @@ public class MySqlDao {
 			rs = stmt.executeQuery("select * from "+table+ ";");
 			rsmd = rs.getMetaData();
 			return rsmd;
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+			System.out.println("SQL Error");
+		}
 		return null;
 		
 	}
@@ -104,22 +112,35 @@ public class MySqlDao {
 			rs = stmt.executeQuery("select * from "+table+ ";");
 			rsmd = rs.getMetaData();
 			return rsmd.getColumnLabel(1);
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+			System.out.println("SQL Error");
+		}
 		return null;
 		
 	}
 
-	private static Connection connetti() throws SQLException{
-		getIstance();
-		conn=DriverManager.getConnection(connessione, user, pw);
+	private static Connection connetti(){
+		try {
+			getIstance();
+			conn=DriverManager.getConnection(connessione, us, pw);
+			return conn;
+		} catch (SQLException e) {
+			System.out.println("SQL Error");
+		}
 		return conn;
+		
 	}
 
-	private static void chiudiConnessione() throws SQLException{
-		if(conn!=null){
-			if(!conn.isClosed()){
-				conn.close();
+	private static void chiudiConnessione() {
+		try {
+			if(conn!=null){
+				if(!conn.isClosed()){
+					conn.close();
+				}
 			}
+		} catch (SQLException e) {
+			System.out.println("SQL Error");
 		}
+	
 	}
 }

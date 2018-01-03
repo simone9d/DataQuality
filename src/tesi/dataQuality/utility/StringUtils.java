@@ -3,6 +3,13 @@ package tesi.dataQuality.utility;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
+/**
+ * Classe contenente tutte le operazioni
+ * necessarie per normalizzare le stringhe
+ * da passare poi ai tool.
+ * @author PC-Simone
+ *
+ */
 public class StringUtils {
 	
 	private static final StringUtils _instance=new StringUtils();

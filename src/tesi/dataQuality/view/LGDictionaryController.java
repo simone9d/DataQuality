@@ -17,7 +17,12 @@ import javafx.stage.Stage;
 import tesi.dataQuality.LanguageTool.WordsUtilsLT;
 import tesi.dataQuality.model.Parola;
 
-
+/**
+ * Classe che gestisce l'aspetto grafico della gesstione
+ * delle eccezioni der LanguageTool
+ * @author PC-Simone
+ *
+ */
 public class LGDictionaryController {
 	
 	private ObservableList<Parola> words=FXCollections.observableArrayList();
