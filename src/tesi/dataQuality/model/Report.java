@@ -21,6 +21,15 @@ public class Report {
 		
 	}
 	
+	public void reset() {
+		this.analyzed=0;
+		this.withMistakes=0;
+		this.wrongSentences.clear();
+		this.inizio=0;
+		this.fine=0;
+		this.totalTime=0;
+	}
+	
 	public long getTotalTime() {
 		return totalTime;
 	}

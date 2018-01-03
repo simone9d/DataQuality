@@ -15,12 +15,7 @@ import java.sql.Statement;
 public class MySqlDao {
 	private static MySqlDao dao=new MySqlDao();
 
-	private final static String host="localhost";
-	public static String db="";
-	public static String us="";
-	public static String table=""; 
-	private static String connessione="jdbc:mysql://" + host + ":3306";	//"/ + db;
-	public static String pw="";
+	
 	
 	private static Connection conn = null;
 	
@@ -33,7 +28,7 @@ public class MySqlDao {
 		}
 	}
 
-	public MySqlDao() {
+	private MySqlDao() {
 	}
 
 	public static MySqlDao getIstance(){
@@ -45,8 +40,8 @@ public class MySqlDao {
 		try {
 			chiudiConnessione();
 			Statement stmt = MySqlDao.connetti().createStatement();
-			stmt.executeQuery("Use "+db+";");
-			ResultSet rs=stmt.executeQuery("Select * from " + table + ";");
+			stmt.executeQuery("Use "+Configurator.getDb()+";");
+			ResultSet rs=stmt.executeQuery("Select * from " + Configurator.getTable() + ";");
 			return rs;
 		} catch (SQLException e) {
 			System.out.println("SQL Error");
@@ -74,7 +69,7 @@ public class MySqlDao {
 		try {
 			chiudiConnessione();
 			Statement stmt = MySqlDao.connetti().createStatement();
-			stmt.executeQuery("Use "+db+";");
+			stmt.executeQuery("Use "+Configurator.getDb()+";");
 			return stmt.executeQuery("show tables;");
 		} catch (SQLException e) {
 			System.out.println("SQL Error");
@@ -89,9 +84,9 @@ public class MySqlDao {
 			chiudiConnessione();
 			ResultSetMetaData rsmd = null;
 			Statement stmt = MySqlDao.connetti().createStatement();
-			stmt.executeQuery("Use "+db+";");
+			stmt.executeQuery("Use "+Configurator.getDb()+";");
 			ResultSet rs;
-			rs = stmt.executeQuery("select * from "+table+ ";");
+			rs = stmt.executeQuery("select * from "+Configurator.getTable()+ ";");
 			rsmd = rs.getMetaData();
 			return rsmd;
 		} catch (SQLException e) {
@@ -107,9 +102,9 @@ public class MySqlDao {
 			chiudiConnessione();
 			ResultSetMetaData rsmd = null;
 			Statement stmt = MySqlDao.connetti().createStatement();
-			stmt.executeQuery("Use "+db+";");
+			stmt.executeQuery("Use "+Configurator.getDb()+";");
 			ResultSet rs;
-			rs = stmt.executeQuery("select * from "+table+ ";");
+			rs = stmt.executeQuery("select * from "+Configurator.getTable()+ ";");
 			rsmd = rs.getMetaData();
 			return rsmd.getColumnLabel(1);
 		} catch (SQLException e) {
@@ -122,7 +117,7 @@ public class MySqlDao {
 	private static Connection connetti(){
 		try {
 			getIstance();
-			conn=DriverManager.getConnection(connessione, us, pw);
+			conn=DriverManager.getConnection(Configurator.getConnessione(), Configurator.getUser(), Configurator.getPw());
 			return conn;
 		} catch (SQLException e) {
 			System.out.println("SQL Error");

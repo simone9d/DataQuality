@@ -14,7 +14,7 @@ public class StringUtils {
 	
 	private static final StringUtils _instance=new StringUtils();
 	
-	public StringUtils() {}
+	private StringUtils() {}
 	
 	public static StringUtils getInstance() {
 		return _instance;

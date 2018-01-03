@@ -1,24 +1,16 @@
 package tesi.dataQuality.analyzer;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Arrays;
+import java.io.*;
+import java.sql.*;
+import java.util.*;
 import java.util.List;
 import org.languagetool.JLanguageTool;
 import org.languagetool.language.Italian;
 import org.languagetool.rules.RuleMatch;
 import com.google.code.geocoder.Geocoder;
 import com.google.code.geocoder.GeocoderRequestBuilder;
-import com.google.code.geocoder.model.GeocodeResponse;
-import com.google.code.geocoder.model.GeocoderRequest;
-import com.google.code.geocoder.model.GeocoderResult;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
+import com.google.code.geocoder.model.*;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import checker.JaSpell;
 import javafx.collections.FXCollections;
@@ -26,17 +18,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.chart.*;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.FileChooser;
@@ -63,7 +46,11 @@ public class AnalyzerController {
 	private void initialize() {
 		
 		for(Column col : Column.getList()) {
-			
+		
+		col.getLTrep().reset();
+		col.getJSrep().reset();
+		col.getGMrep().reset();
+		
 		Tab panel = new Tab(col.getCampo());
 		
 		if(!(!col.isLanguageTool()&&!col.isJaspell()&&!col.isGoogleMaps())) {
@@ -75,10 +62,10 @@ public class AnalyzerController {
 			
 		try {
 			
+			col.getFields().clear();
 			while(rs.next()) {
 				Campo field = new Campo(rs.getString(col.getIndex()),rs.getString(1));
 				field.setColumn(col.getCampo());
-				//creo prima tutta la lista dei campi
 				
 				col.addFields(field);
 			}
@@ -481,6 +468,7 @@ public class AnalyzerController {
 	private void GMAnalysis(Column col) {
 
 		try {
+			col.getGMrep().reset();
 			col.getGMrep().setInizio();
 			for(Campo field : col.getFields()){
 				col.getGMrep().incrAnalyzed();
@@ -514,6 +502,7 @@ public class AnalyzerController {
 	private void JSAnalysis(Column col) {
 		
 		try {
+			col.getJSrep().reset();
 			col.getJSrep().setInizio();
 			for(Campo field : col.getFields()){
 				boolean mistaken=false;
@@ -546,6 +535,7 @@ public class AnalyzerController {
 	
 	private void LTAnalysis(Column col) {
 		try {
+			col.getLTrep().reset();
 			col.getLTrep().setInizio();
 			for(Campo field : col.getFields()){
 				boolean mistaken=false;

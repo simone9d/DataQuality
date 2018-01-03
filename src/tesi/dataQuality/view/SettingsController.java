@@ -1,9 +1,7 @@
 package tesi.dataQuality.view;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
+import java.sql.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -11,18 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -30,6 +17,7 @@ import javafx.scene.shape.Line;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tesi.dataQuality.MainApp;
+import tesi.dataQuality.DAO.Configurator;
 import tesi.dataQuality.DAO.MySqlDao;
 import tesi.dataQuality.analyzer.AnalyzerController;
 import tesi.dataQuality.model.Column;
@@ -109,8 +97,8 @@ public class SettingsController {
 	@FXML
 	private void insPW() {
 		slctDB.getItems().clear();
-		MySqlDao.pw=PWMask.getText();
-		MySqlDao.us=userName.getText();
+		Configurator.setPw(PWMask.getText());
+		Configurator.setUser(userName.getText());
 		
 		ResultSet rs=MySqlDao.getDatabases();
 		
@@ -122,7 +110,7 @@ public class SettingsController {
 					    @Override
 					    public void handle(ActionEvent event) {
 					    	slctDB.setText(item.getText());
-					    	MySqlDao.db=item.getText();
+					    	Configurator.setDb(item.getText());
 					    	showTables();
 					    }
 					});
@@ -180,7 +168,7 @@ public class SettingsController {
 			        Toggle old_toggle, Toggle new_toggle) {
 			            if (group.getSelectedToggle() != null) {
 			            	RadioButton selectedRadioButton =(RadioButton) group.getSelectedToggle();
-			            	MySqlDao.table=selectedRadioButton.getText();
+			            	Configurator.setTable(selectedRadioButton.getText());
 			            	setter();
 			            }                
 			        }
